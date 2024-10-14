@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import ProductCard from '../components/ProductCard';
-import {Link} from 'react-router-dom'
+
 
 const Home = () => {
   const [products, setProducts] = useState([]);
+  const [searchParams, setSearchParams] = useState()
 
   useEffect(() => {
-    fetch(process.env.REACT_APP_API_URL + '/products')
+    fetch(process.env.REACT_APP_API_URL + '/products?'+searchParams)
       .then((res) => {
         if (!res.ok) {
           throw new Error("Failed to fetch products");
         }
         return res.json();
       })
-      .then((res) => setProducts(res.products))  // Make sure to access the "products" array correctly
+      .then((res) => setProducts(res.products))  
       .catch((error) => console.error("Error fetching products:", error));
-  }, []);
+  }, [searchParams]);
 
   return (
     <>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-const ProductCard = ({key, name, price, image, description, rating, product }) => {
+const ProductCard = ({ name, price, image, description, rating, product }) => {
   // Function to generate star ratings dynamically
   const renderStars = (rating) => {
     const fullStars = Math.floor(rating); // Number of full stars
